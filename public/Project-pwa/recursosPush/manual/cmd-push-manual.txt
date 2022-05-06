@@ -1,0 +1,41 @@
+﻿//https://pusher.com/tutorials/push-notifications-node-service-workers
+
+0) instalar node desde nodejs.org
+
+1) https://github.com/web-push-libs/web-push
+
+
+// ---------------------- CON WEB PUSH (App) --------------------------
+2) npm install web-push -g
+
+3) Generar VAPID KEYS:  
+web-push generate-vapid-keys --json
+
+{"publicKey":"BCHgTpioeW2P0mn6KkJ7kUp3b7g0-Ht_PRv0XGwFOjuA6mWPSVABPzZia5AdO29sBOHnuL0RfHAb3eGWTQQjE6w","privateKey":"aoEKLr6QD2L1BAoPDZhgWCs3EZS6lTcuiwHg56Qhtgk"}
+
+4) Setear clave pública vapid-keys:publicKey en PWA
+
+5) Suscribirme en PWA
+{"endpoint":"https://fcm.googleapis.com/fcm/send/fvb7OqW58Go:APA91bFLs-K4RNEO71taex-LkOfFmh6ETDVJ-UVnv1VTd5V9p6lJvfxoR3j25zyjfiAngWCc3LIUsiVspcJilTrVkh_ccylK-05jplSdzAbyMzIRWE60JF9-Mc6heG1z-3typSyZxGtZ","expirationTime":null,"keys":{"p256dh":"BO_m_lOLQmbEQGXHiUOeFHN5ClFUn4xhzoDqO_MdaXj1HKC1hQfKGH7hqe3-7bsln5Ps4UXJoVftcbTaihr_lsU","auth":"_5cIa3YrFVrjjlp2x32Mrg"}}
+
+6) Enviar la notificación push: 
+
+web-push send-notification --endpoint="https://fcm.googleapis.com/fcm/send/fvb7OqW58Go:APA91bFLs-K4RNEO71taex-LkOfFmh6ETDVJ-UVnv1VTd5V9p6lJvfxoR3j25zyjfiAngWCc3LIUsiVspcJilTrVkh_ccylK-05jplSdzAbyMzIRWE60JF9-Mc6heG1z-3typSyZxGtZ" --key="BO_m_lOLQmbEQGXHiUOeFHN5ClFUn4xhzoDqO_MdaXj1HKC1hQfKGH7hqe3-7bsln5Ps4UXJoVftcbTaihr_lsU" --auth="_5cIa3YrFVrjjlp2x32Mrg" --payload="PROBANDO NOTIFICACIONES WEBPUSH" --ttl=0 --vapid-subject="mailto: joserodriguezbauen@gmail.com" --vapid-pubkey="BCHgTpioeW2P0mn6KkJ7kUp3b7g0-Ht_PRv0XGwFOjuA6mWPSVABPzZia5AdO29sBOHnuL0RfHAb3eGWTQQjE6w" --vapid-pvtkey="bfPM40o3-KGUlQQPMk7tcqB4DL8q8cTifHbrKBf17jI"
+
+
+// ---------------------- CON WEB PUSH (Código) --------------------------
+7) git clone https://github.com/web-push-libs/web-push.git
+
+8) Generar VAPID KEYS:  
+node src/cli.js generate-vapid-keys --json
+
+{"publicKey":"BPRT8l0iegD0WegAugVw_iJFm6l8Geke8_Ehjrel_7FptYW8EML4kkBQdT_NjW2SXDExnifZ2Czbs2O_i6YA5VQ","privateKey":"EvKx10TOtDQKNWkGDBlPEv5q7Z_n8noXRqV2CTOj6lU"}
+
+9) Setear clave pública vapid-keys:publicKey en PWA
+
+10) Suscribirme en PWA
+{"endpoint":"https://fcm.googleapis.com/fcm/send/dkZlGcjEEZE:APA91bFwb-CoD2tyj9F4ZfnW_ByoBYd_8R0gKIk2uoRfS6T4iQ1fb_zA52fmKbYHFxlFRebolusB2NESx10DqRrOoJWlykaHi7jMNIvnLoEHlcJdj8aJwpJ28c6DBe4m7WV6iaxDtWfW","expirationTime":null,"keys":{"p256dh":"BFNsB3ykLnEy96UTgQ7szq9o9hnYpGKHqE33nq25ehWuOMxGF5H-v76foImoK-zOsfqxLRGjf2TEYC0-iBBfdDU","auth":"rBUldGbVxbHdvQYNmrVsgA"}}
+
+11) Enviar la notificación push: 
+
+node src/cli.js send-notification --endpoint="https://fcm.googleapis.com/fcm/send/dkZlGcjEEZE:APA91bFwb-CoD2tyj9F4ZfnW_ByoBYd_8R0gKIk2uoRfS6T4iQ1fb_zA52fmKbYHFxlFRebolusB2NESx10DqRrOoJWlykaHi7jMNIvnLoEHlcJdj8aJwpJ28c6DBe4m7WV6iaxDtWfW" --key="BFNsB3ykLnEy96UTgQ7szq9o9hnYpGKHqE33nq25ehWuOMxGF5H-v76foImoK-zOsfqxLRGjf2TEYC0-iBBfdDU" --auth="rBUldGbVxbHdvQYNmrVsgA" --payload="HOLA MUNDO DESDE WEBPUSH CÓDIGO" --ttl=0 --vapid-subject="mailto: joserodriguezbauen@gmail.com" --vapid-pubkey="BPRT8l0iegD0WegAugVw_iJFm6l8Geke8_Ehjrel_7FptYW8EML4kkBQdT_NjW2SXDExnifZ2Czbs2O_i6YA5VQ" --vapid-pvtkey="EvKx10TOtDQKNWkGDBlPEv5q7Z_n8noXRqV2CTOj6lU"

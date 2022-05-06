@@ -1,0 +1,47 @@
+{{!-- Product List --}}
+<ul id="contenedor-lista" class="demo-list-icon mdl-list w-100">
+
+    {{#listaProductos}}
+    <!-- Product -->
+    <li class="mdl-list__item">
+
+        <!-- icono -->
+        <span class="mdl-list__item-primary-content w-10">
+            <i class="material-icons-round  mdl-list__item-icon">shopping_cart</i>
+        </span>
+
+        <!-- nombre del producto -->
+        <span class="mdl-list__item-primary-content w-30">
+            {{nombre}}
+        </span>
+
+        <!-- cantidad -->
+        <span class="mdl-list__item-primary-content w-20">
+            <!-- Textfield with Floating Label -->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input onchange="cambiarValor('cantidad', {{id}}, this)" value="{{cantidad}}"
+                    class="mdl-textfield__input" type="text" id="sample-cantidad-{{@index}}">
+                <label class="mdl-textfield__label" for="sample-cantidad-{{@index}}">Cantidad</label>
+            </div>
+        </span>
+
+        <!-- precio -->
+        <span class="mdl-list__item-primary-content w-20 ml-item">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input onchange="cambiarValor('precio', {{id}}, this)" value="{{precio}}"
+                    class="mdl-textfield__input" type="text" id="sample-precio-{{@index}}">
+                <label class="mdl-textfield__label" for="sample-precio-{{@index}}">Precio</label>
+            </div>
+        </span>
+
+        <!-- acción (borrar el producto) -->
+        <span class="mdl-list__item-primary-content w-20 ml-item">
+            <!-- Colored FAB button with ripple -->
+            <button onclick="borrarProd({{id}})"
+                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">delete_forever</i>
+            </button>
+        </span>
+    </li>
+    {{/listaProductos}}
+</ul>

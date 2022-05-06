@@ -1,0 +1,25 @@
+{"publicKey":"BCHgTpioeW2P0mn6KkJ7kUp3b7g0-Ht_PRv0XGwFOjuA6mWPSVABPzZia5AdO29sBOHnuL0RfHAb3eGWTQQjE6w","privateKey":"aoEKLr6QD2L1BAoPDZhgWCs3EZS6lTcuiwHg56Qhtgk"}
+----------------------------------------------------------------------------
+Ejemplo 1:
+
+{"endpoint":"https://fcm.googleapis.com/fcm/send/fvb7OqW58Go:APA91bFLs-K4RNEO71taex-LkOfFmh6ETDVJ-UVnv1VTd5V9p6lJvfxoR3j25zyjfiAngWCc3LIUsiVspcJilTrVkh_ccylK-05jplSdzAbyMzIRWE60JF9-Mc6heG1z-3typSyZxGtZ","expirationTime":null,"keys":{"p256dh":"BO_m_lOLQmbEQGXHiUOeFHN5ClFUn4xhzoDqO_MdaXj1HKC1hQfKGH7hqe3-7bsln5Ps4UXJoVftcbTaihr_lsU","auth":"_5cIa3YrFVrjjlp2x32Mrg"}}
+
+web-push send-notification --endpoint="https://fcm.googleapis.com/fcm/send/fvb7OqW58Go:APA91bFLs-K4RNEO71taex-LkOfFmh6ETDVJ-UVnv1VTd5V9p6lJvfxoR3j25zyjfiAngWCc3LIUsiVspcJilTrVkh_ccylK-05jplSdzAbyMzIRWE60JF9-Mc6heG1z-3typSyZxGtZ" --key="BO_m_lOLQmbEQGXHiUOeFHN5ClFUn4xhzoDqO_MdaXj1HKC1hQfKGH7hqe3-7bsln5Ps4UXJoVftcbTaihr_lsU" --auth="_5cIa3YrFVrjjlp2x32Mrg" --payload="PROBANDO NOTIFICACIONES WEBPUSH" --ttl=0 --vapid-subject="mailto: joserodriguezbauen@gmail.com" --vapid-pubkey="BCHgTpioeW2P0mn6KkJ7kUp3b7g0-Ht_PRv0XGwFOjuA6mWPSVABPzZia5AdO29sBOHnuL0RfHAb3eGWTQQjE6w" --vapid-pvtkey="aoEKLr6QD2L1BAoPDZhgWCs3EZS6lTcuiwHg56Qhtgk"
+
+----------------------------------------------------------------------------
+Ejemplo 2:
+{"endpoint":"https://fcm.googleapis.com/fcm/send/do1BrUe7djg:APA91bEE6Dtd7ERlIj4rKEKqigIGkoU6pL3nyo8ybvd5y6EHm-HeW2RkL9hk4qRtzANwRwoK_pcSg2U93450j67V6-x3VxDhBbxj9AmtHKu79oPgmmZql94fgH5bqRu-UuENQd2LtDl-","expirationTime":null,"keys":{"p256dh":"BD_lraXf83SfF1y4ZQa6vm2FeauT85u2vMYW4pPFZrvdi4CdvrGl6tlnzibg_W_cFZ9UxWRVhHFPkdJnQQ0Mpa0","auth":"hZUfZ2FeCsK5Pc1kDBVzSQ"}}
+
+web-push send-notification --endpoint="https://fcm.googleapis.com/fcm/send/do1BrUe7djg:APA91bEE6Dtd7ERlIj4rKEKqigIGkoU6pL3nyo8ybvd5y6EHm-HeW2RkL9hk4qRtzANwRwoK_pcSg2U93450j67V6-x3VxDhBbxj9AmtHKu79oPgmmZql94fgH5bqRu-UuENQd2LtDl-" --key="BD_lraXf83SfF1y4ZQa6vm2FeauT85u2vMYW4pPFZrvdi4CdvrGl6tlnzibg_W_cFZ9UxWRVhHFPkdJnQQ0Mpa0" --auth="hZUfZ2FeCsK5Pc1kDBVzSQ" --payload="Hola Marcelo probando la WEB-PUSH!!! 123" --ttl=0 --vapid-subject="mailto: joserodriguezbauen@gmail.com" --vapid-pubkey="BCHgTpioeW2P0mn6KkJ7kUp3b7g0-Ht_PRv0XGwFOjuA6mWPSVABPzZia5AdO29sBOHnuL0RfHAb3eGWTQQjE6w" --vapid-pvtkey="aoEKLr6QD2L1BAoPDZhgWCs3EZS6lTcuiwHg56Qhtgk"
+
+
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+Ejemplo 3: webpush desde código
+
+{"publicKey":"BBX3S71oHu6B7GsMILnhxvqrY7eXnBHr54d7qkrcGYM7aGpBid6h0LCBMQJg-MAp8m9h5L1y-Q1i7QscOXBF3b0","privateKey":"xi1QJZ7a4tUyPPVYab1mhNIbbrzYKT5sGxUtxJ-_l3U"}
+
+{"endpoint":"https://fcm.googleapis.com/fcm/send/ctKzCcE_f0A:APA91bHcCC-u-gA1EMEH-LO3sEPSFm6Vg8YBuFIGfb8AUoK5RbKB2Crz8WyNlIdIkS8537FgcT117ESzBvKGWDdbQmxBgKVnu8ueY58b_vNj2q6hDkj5BDwVcILOwHMIXNr4yT_fKorK","expirationTime":null,"keys":{"p256dh":"BBGaDfizhSYMEMu6qInHU7Thl28rikU_SCirWGQpo5tGaady4ZAlf9jawJW9tbloAXIp08D2dVL8zqjX3GweHy0","auth":"t_iHQb_JbQQ6mTxJmz4-AA"}}
+
+node src/cli.js send-notification --endpoint="https://fcm.googleapis.com/fcm/send/ctKzCcE_f0A:APA91bHcCC-u-gA1EMEH-LO3sEPSFm6Vg8YBuFIGfb8AUoK5RbKB2Crz8WyNlIdIkS8537FgcT117ESzBvKGWDdbQmxBgKVnu8ueY58b_vNj2q6hDkj5BDwVcILOwHMIXNr4yT_fKorK" --key="BBGaDfizhSYMEMu6qInHU7Thl28rikU_SCirWGQpo5tGaady4ZAlf9jawJW9tbloAXIp08D2dVL8zqjX3GweHy0" --auth="t_iHQb_JbQQ6mTxJmz4-AA" --payload="HOLA MUNDO DESDE NODE WEBPUSH CÓDIGO 123" --ttl=0 --vapid-subject="mailto: danielsanchez68@hotmail.com" --vapid-pubkey="BBX3S71oHu6B7GsMILnhxvqrY7eXnBHr54d7qkrcGYM7aGpBid6h0LCBMQJg-MAp8m9h5L1y-Q1i7QscOXBF3b0" --vapid-pvtkey="xi1QJZ7a4tUyPPVYab1mhNIbbrzYKT5sGxUtxJ-_l3U"
+

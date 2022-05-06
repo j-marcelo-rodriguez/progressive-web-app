@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Lista de Productos</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#607D8B" />
+    <link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
+
+    <!-- material design lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-teal.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Super Lista de Productos</span>
+                <span class="material-icons-outlined ml-item">
+                    store
+                </span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <!--                     <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a> -->
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Servicios</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Servicio 1</a>
+                <a class="mdl-navigation__link" href="">Servicio 2</a>
+                <a class="mdl-navigation__link" href="">Servicio 3</a>
+                <a class="mdl-navigation__link" href="">Servicio 4</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Your content goes here -->
+
+                <!-- Logo -->
+                <div><img src="./images/supermarket.jpg" alt="foto supermercado"></div>
+
+                <!-- Barra de progreso (borrar todo) -->
+                <progress min="0" max="100" value="0"></progress>
+
+                <!-- Menu Modal (borrar todo) -->
+                <!-- <button id="show-dialog" type="button" class="mdl-button">Show Dialog</button> -->
+                <dialog class="mdl-dialog">
+                    <h4 class="mdl-dialog__title">Desea borrar todo?</h4>
+                    <br>
+                    <!-- <div class="mdl-dialog__content">
+                        <p>
+                            Allowing us to collect data will let us get you the information you want faster.
+                        </p>
+                    </div> -->
+                    <div class="mdl-dialog__actions">
+                        <button type="button" class="mdl-button aceptar">Aceptar</button>
+                        <button type="button" class="mdl-button cancelar">Cancelar</button>
+                    </div>
+                </dialog>
+
+                <!-- Menu -->
+                <div class="container">
+
+                    <!-- Campo para ingresar producto -->
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label w-40">
+                        <input id="ingreso-producto" class="mdl-textfield__input" type="text" id="sample3">
+                        <label class="mdl-textfield__label" for="sample3">Ingresa tu producto</label>
+                    </div>
+
+                    <!-- Botón para agregar producto a la lista-->
+                    <div class="w-30 ml-item">
+                        <!-- Colored FAB button with ripple -->
+                        <button id="btn-entrada-producto"
+                            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                            <i class="material-icons-two-tone">add_shopping_cart</i>
+                        </button>
+                    </div>
+
+                    <!-- Botón para borrar todos los productos -->
+                    <div class="w-30">
+                        <!-- Accent-colored raised button with ripple -->
+                        <button id="btn-borrar-productos"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                            Borrar Todo
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- listado de productos -->
+                <div id="lista"></div>
+
+                <!-- ------------Push------------- --> 
+                
+                <section>
+                    <p>
+                        <button disabled
+                            class="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            Habilitar Notificaciones Push
+                        </button>
+                    </p>
+                    <div class="subscription-details js-subscription-details is-invisible">
+                        <pre><code class="js-subscription-json"></code></pre>
+                    </div>
+
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- LIBRERÍA JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Motor de plantillas (HANDLEBARS) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="js/api.js"></script>
+    <script src="js/push.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
