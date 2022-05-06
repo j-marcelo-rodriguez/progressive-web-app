@@ -2,7 +2,6 @@ const CACHE_STATIC_NAME = 'static-v02'
 const CACHE_INMUTABLE_NAME = 'inmutable-v02'
 const CACHE_DYNAMIC_NAME = 'dynamic-v02'
 
-const CON_CACHE = false
 
 self.addEventListener('install', e => {
     console.log('sw install')
@@ -63,31 +62,31 @@ self.addEventListener('activate', e => {
 })
 
 self.addEventListener('fetch', e => {
-    if (CON_CACHE) {
-        let { url, method } = e.request
 
-        if (method == 'GET' && !url.includes('mockapi.io')) {
-            const respuesta = caches.match(e.request).then(res => {
-                if (res) {
-                    console.log('El recurso existe en el cache', url)
-                    return res
-                }
-                console.warn('El recurso NO existe en el cache', url)
+    let { url, method } = e.request
 
-                return fetch(e.request).then(nuevaRespuesta => {
-                    caches.open(CACHE_DYNAMIC_NAME).then(cache => {
-                        cache.put(e.request, nuevaRespuesta)
-                    })
-                    return nuevaRespuesta.clone()
+    if (method == 'GET' && !url.includes('mockapi.io')) {
+        const respuesta = caches.match(e.request).then(res => {
+            if (res) {
+                console.log('El recurso existe en el cache', url)
+                return res
+            }
+            console.warn('El recurso NO existe en el cache', url)
+
+            return fetch(e.request).then(nuevaRespuesta => {
+                caches.open(CACHE_DYNAMIC_NAME).then(cache => {
+                    cache.put(e.request, nuevaRespuesta)
                 })
+                return nuevaRespuesta.clone()
             })
+        })
 
-            e.respondWith(respuesta)
+        e.respondWith(respuesta)
 
-        } else {
-            console.warn('BYPASS', method, url)
-        }
+    } else {
+        console.warn('BYPASS', method, url)
     }
+
 })
 
 self.addEventListener('push', e => {
